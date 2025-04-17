@@ -86,12 +86,8 @@ Hacer los cambios necesarios y realizar los commits.
 #### ⚙️ 4. Crear manifiestos de Kubernete
 
 ##### Volúmenes Persistentes
-1. Parándose sobre la carpeta principal `0311_Cloud`, copiar tu sitio web personalizado a una carpeta compartida por Minikube:
-```bash
-cp -r C:\Users\HP\0311_Cloud\static-website C:\Users\HP\static-site-public 
-```
 
-2. Moverse a la carpeta de `volumes` y crear `pv.yaml`:
+1. Moverse a la carpeta de `volumes` y crear `pv.yaml`:
 ```bash
 cd k8s-manifests/volumes
 New-Item -Path . -Name "pv.yaml" -ItemType "File"
@@ -113,7 +109,7 @@ spec:
 ```
 
    
-3. Crear `pvc.yaml`:
+2. Crear `pvc.yaml`:
 ```bash
 New-Item -Path . -Name "pvc.yaml" -ItemType "File"
 ```
@@ -132,7 +128,7 @@ spec:
       storage: 1Gi
 ```
 
-4. Aplicar cambios para crear los archivos correctamente. Verificar que todo esté ejecutándose correctamente:
+3. Aplicar cambios para crear los archivos correctamente. Verificar que todo esté ejecutándose correctamente:
 ```bash
 kubectl apply -f .
 kubectl get pv,pvc
