@@ -49,7 +49,7 @@ de Github
 minikube start --driver=docker
 ```
 
-Verificá que el clúster esté activo:
+Verificar que el clúster esté activo:
 
 ```bash
 kubectl get nodes
@@ -73,7 +73,7 @@ mkdir deployments,services,volumes
 
 ##### Clonar contenido del sitio web
 
-Volver a la carpeta `0311_Cloud` con `cd`, hacer fork del repositorio base `https://github.com/ewojjowe/static-website`, clonarlo e inicializarlo:
+Volver a la carpeta `0311_Cloud`, hacer fork del repositorio base `https://github.com/ewojjowe/static-website`, clonarlo e inicializarlo:
 
 ```bash
 cd ..
@@ -92,7 +92,7 @@ Hacer los cambios necesarios y realizar los commits.
 cd k8s-manifests/volumes
 New-Item -Path . -Name "pv.yaml" -ItemType "File"
 ```
-El archivo se creará vacío, pero lo completaremos con esto:
+El archivo se creará vacío, pero se lo completará manualmente con esto:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -113,7 +113,7 @@ spec:
 ```bash
 New-Item -Path . -Name "pvc.yaml" -ItemType "File"
 ```
-El archivo se creará vacío, pero lo completaremos con esto:
+El archivo se creará vacío, pero se lo completará manualmente con esto:
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -192,7 +192,7 @@ kubectl get services
 
 #### ✍🏼 5. Crear repositorio de manifiestos en GitHub
 1. Crear desde GitHub un repositorio nuevo llamado `k8s-manifests`.
-2. Desde la terminal, parados sobre la carpeta `k8s-manifests`, inicializarla y enviar el repositorio existente:
+2. Desde la terminal, estando sobre la carpeta `k8s-manifests`, inicializarla y enviar el repositorio existente:
 ```bash
 cd ..
 git init
@@ -203,10 +203,10 @@ git status
 3. Hacer los commits correspondientes para subir los archivos creados anteriormente a GitHub.
 
 #### 🌐 6. Despliegue de la página
-1. Borrar el clúster creado, volver a montarlo correctamente a la carpeta que usó en el hostPath al crear los volúmenes persistentes y volver a crear los archivos:
+1. Borrar el clúster creado, volver a montarlo correctamente a la carpeta que se usó en el hostPath al crear los volúmenes persistentes y volver a crear los archivos:
 ```bash
 minikube delete
-minikube start --driver=docker --mount --mount-string="C:/Users/HP/0311_Cloud/static-website:/mnt/web/static-website"
+minikube start --driver=docker --mount --mount-string="ruta-de-tu/carpeta/0311_Cloud/static-website:/mnt/web/static-website"
 kubectl apply -f volumes/.
 kubectl apply -f deployments/.
 kubectl apply -f services/.
